@@ -66,7 +66,8 @@
             margin-top: 30px;
         }
 
-        .button-container a {
+        .button-container a,
+        .button-container button {
             background-color: #4CAF50;
             color: white;
             padding: 15px 25px;
@@ -78,10 +79,42 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s ease;
             animation: fadeIn 2s ease-in-out;
+            border: none;
+            cursor: pointer;
         }
 
-        .button-container a:hover {
+        .button-container a:hover,
+        .button-container button:hover {
             background-color: #45a049;
+        }
+
+        .about-section {
+            display: none;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .about-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .about-section .team {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .about-section .team .member {
+            width: 20%;
+            text-align: center;
+        }
+
+        .about-section .team .member img {
+            width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         footer {
@@ -104,15 +137,21 @@
             .images img {
                 width: 45%;
             }
+
+            .about-section .team .member {
+                width: 45%;
+            }
         }
 
         @media (max-width: 480px) {
             .images img {
                 width: 90%;
             }
-        }
 
-        @media (max-width: 480px) {
+            .about-section .team .member {
+                width: 90%;
+            }
+
             header h1 {
                 font-size: 32px;
             }
@@ -125,12 +164,23 @@
                 font-size: 18px;
             }
 
-            .button-container a {
+            .button-container a,
+            .button-container button {
                 padding: 10px 20px;
                 font-size: 18px;
             }
         }
     </style>
+    <script>
+        function toggleAboutSection() {
+            const aboutSection = document.querySelector('.about-section');
+            if (aboutSection.style.display === 'none' || aboutSection.style.display === '') {
+                aboutSection.style.display = 'block';
+            } else {
+                aboutSection.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -141,20 +191,44 @@
     </header>
 
     <main>
-        <p>A new adventure in Digital India <br> Voting is your first duty. Thank you to every Indian who voted in this
-            Lok Sabha election 2K-24</p>
+        <p>A new adventure in Digital India <br> Voting is your first duty. Thank you to every Indian who voted in this Lok Sabha election 2K-24</p>
         <hr>
 
         <div class="images">
-            <img src="https://images.news9live.com/wp-content/uploads/2023/12/Lok-Sabha-Elections-2024-%E2%80%93-What-we-know-so-far-about-General-Election.jpg?w=1200&enlarge=true"
-                alt="Election Image 1">
-            <img src="https://hindi.newsdanka.com/wp-content/uploads/2023/12/lok-sabha-election-2024-big-leader-of-bjp-will-fight-from-ayodhya-loksbha-seat.jpg"
-                alt="Election Image 2">
+            <img src="https://images.news9live.com/wp-content/uploads/2023/12/Lok-Sabha-Elections-2024-%E2%80%93-What-we-know-so-far-about-General-Election.jpg?w=1200&enlarge=true" alt="Election Image 1">
+            <img src="https://hindi.newsdanka.com/wp-content/uploads/2023/12/lok-sabha-election-2024-big-leader-of-bjp-will-fight-from-ayodhya-loksbha-seat.jpg" alt="Election Image 2">
             <img src="https://imgeng.jagran.com/images/2024/mar/elec%2081709540319889.jpg" alt="Election Image 3">
         </div>
 
         <div class="button-container">
-            <a href="D:\MY WEBSITE\second page.html">See Results</a>
+            <a href="second.html">See Results</a>
+            <button onclick="toggleAboutSection()">About Us</button>
+        </div>
+
+        <div class="about-section">
+            <h2>About Us</h2>
+            <div class="team">
+                <div class="member">
+                    <img src="WhatsApp Image 2024-06-02 at 9.01.50 PM.jpeg" alt="Sudhanva">
+                    <p>Sudhanva Ballary</p>
+                    <p>Web Devlopper & Web Designing</p>
+                </div>
+                <div class="member">
+                    <img src="WhatsApp Image 2024-06-02 at 9.13.09 PM.jpeg" alt="Sanjeev">
+                    <p>Sanjeev Nadgir</p>
+                    <p>Founder & Manager</p>
+                </div>
+                <div class="member">
+                    <img src="WhatsApp Image 2024-06-02 at 9.01.05 PM.jpeg" alt="Suman">
+                    <p>Suman Kaladagi</p>
+                    <p>Data Analyser</p>
+                </div>
+                <div class="member">
+                    <img src="WhatsApp Image 2024-06-02 at 9.17.56 PM.jpeg" alt="Ankitha">
+                    <p>Ankitha Lakkolli</p>
+                    <p>Data Analyser</p>
+                </div>
+            </div>
         </div>
     </main>
 
