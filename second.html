@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results of Loksabha Election in All States of India</title>
+    <style>
+        /* Example CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .state-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .state {
+            flex: 1 0 30%;
+            margin: 10px;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .state:hover {
+            background-color: #0056b3;
+        }
+
+        .results, .pagination {
+            margin-top: 20px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Results of Loksabha Election in All States of India</h1>
+        <div class="search-bar">
+            <input type="text" id="stateSearch" onkeyup="filterStates()" placeholder="Search for states...">
+        </div>
+        <div class="state-list" id="stateList">
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S01.htm', '_blank')">Andhra Pradesh</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/candidateswise-S022.htm','_blank')">Arunachal Pradesh</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S03.htm', '_blank')">Assam</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S04.htm', '_blank')">Bihar</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/ConstituencywiseS264.htm', '_blank')">Chhattisgarh</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S05.htm', '_blank')">Goa</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S06.htm', '_blank')">Gujarat</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/ConstituencywiseS074.htm', '_blank')">Haryana</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S08.htm', '_blank')">Himachal Pradesh</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S27.htm', '_blank')">Jharkhand</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S10.htm', '_blank')">Karnataka</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S11.htm', '_blank')">Kerala</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S12.htm', '_blank')">Madhya Pradesh</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/candidateswise-S1339.htm', '_blank')">Maharashtra</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/candidateswise-S142.htm', '_blank')">Manipur</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/candidateswise-S151.htm', '_blank')">Meghalaya</div>
+            <div class="state" onclick="window.open('https://www.indiatoday.in/elections/lok-sabha/story/mizoram-mizoram-lok-sabha-election-results-2024-live-updates-clse-2547862-2024-06-04', '_blank')">Mizoram</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/ConstituencywiseS171.htm', '_blank')">Nagaland</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/candidateswise-S181.htm', '_blank')">Odisha</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S19.htm', '_blank')">Punjab</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S20.htm', '_blank')">Rajasthan</div>
+            <div class="state" onclick="window.open('https://www.indiatoday.in/elections/lok-sabha/story/sikkim-sikkim-lok-sabha-election-results-2024-live-updates-clse-2547927-2024-06-04', '_blank')">Sikkim</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/candidateswise-S224.htm', '_blank')">Tamil Nadu</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/ConstituencywiseS299.htm', '_blank')">Telangana</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/candidateswise-S231.htm', '_blank')">Tripura</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S24.htm', '_blank')">Uttar Pradesh</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/ConstituencywiseS285.htm', '_blank')">Uttarakhand</div>
+            <div class="state" onclick="window.open('https://results.eci.gov.in/PcResultGenJune2024/partywiseresult-S25.htm', '_blank')">West Bengal</div>
+        </div>
+        <div class="results" id="results">
+            <!-- Results will be displayed here -->
+        </div>
+        <div class="pagination" id="pagination">
+            <!-- Pagination buttons will be displayed here -->
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Constituency Details</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Constituency details will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Your existing JavaScript code
+        function filterStates() {
+            // Add your JavaScript code here
+        }
+
+        function showResults(state) {
+            // Add your JavaScript code here
+        }
+
+        function closeModal() {
+            // Add your JavaScript code here
+        }
+    </script>
+</body>
+</html>
