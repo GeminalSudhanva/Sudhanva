@@ -52,11 +52,19 @@
             text-align: center;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, opacity 0.3s;
         }
 
         .state:hover {
             background-color: #0056b3;
+        }
+
+        .highlight {
+            background-color: #28a745 !important;
+        }
+
+        .dim {
+            opacity: 0.3;
         }
 
         .results, .pagination {
@@ -155,17 +163,30 @@
     </div>
 
     <script>
-        // Your existing JavaScript code
         function filterStates() {
-            // Add your JavaScript code here
-        }
+            const input = document.getElementById('stateSearch').value.toLowerCase();
+            const stateList = document.getElementById('stateList').children;
+            
+            for (let state of stateList) {
+                const stateName = state.textContent.toLowerCase();
+                
+                if (stateName.includes(input) && input !== "") {
+                    state.classList.add('highlight');
+                    state.classList.remove('dim');
+                } else {
+                    state.classList.add('dim');
+                    state.classList.remove('highlight');
+                }
 
-        function showResults(state) {
-            // Add your JavaScript code here
+                if (input === "") {
+                    state.classList.remove('dim');
+                    state.classList.remove('highlight');
+                }
+            }
         }
 
         function closeModal() {
-            // Add your JavaScript code here
+            document.getElementById('myModal').style.display = "none";
         }
     </script>
 </body>
